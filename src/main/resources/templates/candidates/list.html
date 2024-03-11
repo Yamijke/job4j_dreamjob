@@ -25,7 +25,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Имя</th>
+                    <th scope="col">ФИО</th>
                     <th scope="col">Уровень</th>
                     <th scope="col">Время создания</th>
                 </tr>
@@ -33,7 +33,8 @@
                 <tbody>
                 <tr th:each="candidate: ${candidates}">
                     <td th:text="${candidate.id}"/>
-                    <td th:text="${candidate.name}"/>
+                    <td><a th:text="${candidate.name}"
+                           th:href="@{/candidates/{candidateId}(candidateId=${candidate.id})}"></a></td>
                     <td th:text="${candidate.level}"/>
                     <td th:text="${#temporals.format(candidate.creationDate, 'dd.MM.yyyy HH:mm:ss')}"/>
                 </tr>
@@ -42,7 +43,6 @@
         </div>
     </div>
     <footer th:insert="blocks/footer :: footer"></footer>
-</div>
 </div>
 </body>
 </html>

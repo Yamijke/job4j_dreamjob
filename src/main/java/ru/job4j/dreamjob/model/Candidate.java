@@ -9,6 +9,9 @@ public class Candidate {
     private String level;
     private LocalDateTime creationDate;
 
+    public Candidate() {
+    }
+
     public Candidate(int id, String name, String level, LocalDateTime creationDate) {
         this.id = id;
         this.name = name;
