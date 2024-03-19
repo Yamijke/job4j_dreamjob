@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.job4j.dreamjob.model.Vacancy;
 import ru.job4j.dreamjob.service.VacancyService;
 
+import javax.annotation.concurrent.ThreadSafe;
+
+@ThreadSafe
 @Controller
 @RequestMapping("/vacancies") /* Работать с кандидатами будем по URI /vacancies/** */
 public class VacancyController {
