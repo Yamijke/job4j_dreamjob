@@ -9,16 +9,18 @@ public class Candidate {
     private String level;
     private LocalDateTime creationDate;
     private int cityId;
+    private int fileId;
 
     public Candidate() {
     }
 
-    public Candidate(int id, String name, String level, LocalDateTime creationDate, int cityId) {
+    public Candidate(int id, String name, String level, LocalDateTime creationDate, int cityId, int fileId) {
         this.id = id;
         this.name = name;
         this.level = level;
         this.creationDate = creationDate;
         this.cityId = cityId;
+        this.fileId = fileId;
     }
 
     public int getId() {
@@ -60,6 +62,15 @@ public class Candidate {
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
+
+    public int getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(int fileId) {
+        this.fileId = fileId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
