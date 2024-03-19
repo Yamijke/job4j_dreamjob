@@ -9,9 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class MemoryCandidateRepository implements CandidateRepository {
-
-    private static final MemoryCandidateRepository INSTANCE = new MemoryCandidateRepository();
     private int nextId = 1;
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
@@ -20,10 +19,6 @@ public class MemoryCandidateRepository implements CandidateRepository {
         save(new Candidate(0, "Anakin Skywalker", "Padavan", LocalDateTime.now()));
         save(new Candidate(0, "Obi-Wan Kenobi", "Jedi-Knight", LocalDateTime.now()));
         save(new Candidate(0, "Qui-Gon Jinn", "Jedi-Master", LocalDateTime.now()));
-    }
-
-    public static MemoryCandidateRepository getInstance() {
-        return INSTANCE;
     }
 
     @Override
