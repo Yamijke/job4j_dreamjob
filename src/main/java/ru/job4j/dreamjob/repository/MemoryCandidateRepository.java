@@ -18,10 +18,10 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Little Boy", "Youngling", LocalDateTime.now()));
-        save(new Candidate(0, "Anakin Skywalker", "Padavan", LocalDateTime.now()));
-        save(new Candidate(0, "Obi-Wan Kenobi", "Jedi-Knight", LocalDateTime.now()));
-        save(new Candidate(0, "Qui-Gon Jinn", "Jedi-Master", LocalDateTime.now()));
+        save(new Candidate(0, "Little Boy", "Youngling", LocalDateTime.now(), 1));
+        save(new Candidate(0, "Anakin Skywalker", "Padavan", LocalDateTime.now(), 1));
+        save(new Candidate(0, "Obi-Wan Kenobi", "Jedi-Knight", LocalDateTime.now(), 2));
+        save(new Candidate(0, "Qui-Gon Jinn", "Jedi-Master", LocalDateTime.now(), 3));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
         return candidates.computeIfPresent(candidate.getId(),
                 (id, oldCandidate) -> new Candidate(oldCandidate.getId(),
                         candidate.getName(), candidate.getLevel(),
-                        candidate.getCreationDate())) != null;
+                        candidate.getCreationDate(), candidate.getCityId())) != null;
     }
 
     @Override
