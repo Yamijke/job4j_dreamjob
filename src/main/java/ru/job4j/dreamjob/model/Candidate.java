@@ -71,7 +71,6 @@ public class Candidate {
         this.fileId = fileId;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
