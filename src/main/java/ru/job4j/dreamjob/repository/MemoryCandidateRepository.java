@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ThreadSafe
 @Repository
 public class MemoryCandidateRepository implements CandidateRepository {
-    private AtomicInteger nextId = new AtomicInteger(1);
+    private AtomicInteger nextId = new AtomicInteger(0);
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private MemoryCandidateRepository() {
