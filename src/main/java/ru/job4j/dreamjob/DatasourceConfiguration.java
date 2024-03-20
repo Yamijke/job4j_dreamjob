@@ -34,6 +34,7 @@ public class DatasourceConfiguration {
         return new Sql2o(dataSource, createConverters());
     }
     private Quirks createConverters() {
+
         return new NoQuirks() {
             {
                 converters.put(LocalDateTime.class, new Converter<LocalDateTime>() {
@@ -48,6 +49,7 @@ public class DatasourceConfiguration {
                         }
                         return ((Timestamp) value).toLocalDateTime();
                     }
+
                     @Override
                     public Object toDatabaseParam(LocalDateTime value) {
                         return value == null ? null : Timestamp.valueOf(value);
