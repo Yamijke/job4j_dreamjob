@@ -26,24 +26,26 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Статус</th>
                     <th scope="col">Название</th>
                     <th scope="col">Дата создания</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="vacancy: ${vacancies}">
+                    <td th:text="${vacancy.id}"></td>
                     <td>
-              <span th:if="${vacancy.visible}">
-                <i class="bi bi-check-square"></i>
-              </span>
+        <span th:if="${vacancy.visible}">
+            <i class="bi bi-check-square"></i>
+        </span>
                         <span th:if="${!vacancy.visible}">
-                  <i class="bi bi-square"></i>
-              </span>
+            <i class="bi bi-square"></i>
+        </span>
                     </td>
-                    <td th:text="${vacancy.id}"/>
                     <td><a th:text="${vacancy.title}" th:href="@{/vacancies/{vacancyId}(vacancyId=${vacancy.id})}"></a></td>
-                    <td th:text="${#temporals.format(vacancy.creationDate, 'dd.MM.yyyy HH:mm:ss')}"/>
+                    <td th:text="${#temporals.format(vacancy.creationDate, 'dd.MM.yyyy HH:mm:ss')}"></td>
                 </tr>
+
                 </tbody>
             </table>
         </div>
