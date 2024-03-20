@@ -33,6 +33,7 @@ public class DatasourceConfiguration {
     public Sql2o databaseClient(DataSource dataSource) {
         return new Sql2o(dataSource, createConverters());
     }
+
     private Quirks createConverters() {
 
         return new NoQuirks() {
