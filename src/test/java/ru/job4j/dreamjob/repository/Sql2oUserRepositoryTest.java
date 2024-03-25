@@ -9,7 +9,6 @@ import ru.job4j.dreamjob.model.User;
 import java.util.Optional;
 import java.util.Properties;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Sql2oUserRepositoryTest {

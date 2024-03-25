@@ -10,12 +10,12 @@ public class User {
             "name", "name",
             "password", "password"
     );
-    private int id;
+    private Integer id;
     private String email;
     private String name;
     private String password;
 
-    public User(int id, String email, String name, String password) {
+    public User(Integer id, String email, String name, String password) {
         this.id = id;
         this.email = email;
         this.name = name;

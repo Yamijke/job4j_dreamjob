@@ -35,8 +35,8 @@ public class Sql2oUserRepository implements UserRepository {
             return Optional.of(user);
         } catch (Exception e) {
             System.err.println("Пользователь с такими данными уже существует" + e);
-            return Optional.empty();
         }
+        return Optional.empty();
     }
 
     @Override
