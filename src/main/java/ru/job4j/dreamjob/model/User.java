@@ -22,6 +22,10 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+        this.name = "Гость";
+    }
+
     public int getId() {
         return id;
     }
