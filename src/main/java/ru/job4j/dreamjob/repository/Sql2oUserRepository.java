@@ -33,6 +33,9 @@ public class Sql2oUserRepository implements UserRepository {
             int generatedId = query.executeUpdate().getKey(Integer.class);
             user.setId(generatedId);
             return Optional.of(user);
+        } catch (Exception e) {
+            System.err.println("Пользователь с такими данными уже существует" + e);
+            return Optional.empty();
         }
     }
 

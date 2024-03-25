@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.Properties;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Sql2oUserRepositoryTest {
     private static Sql2oUserRepository sql2oUserRepository;
@@ -46,9 +47,10 @@ class Sql2oUserRepositoryTest {
         String password = "555";
         var optionalUser =
                 sql2oUserRepository.save(new User(5, name, email, password));
-        var expected =
-                sql2oUserRepository.findByEmailAndPassword(
-                        optionalUser.get().getEmail(), optionalUser.get().getPassword());
+        assertTrue(optionalUser.isPresent(), "Пользователь не был сохранен");
+        User savedUser = optionalUser.orElseThrow();
+        var expected = sql2oUserRepository.findByEmailAndPassword(savedUser.getEmail(), savedUser.getPassword());
+        assertTrue(expected.isPresent(), "Пользователь не найден");
         assertThat(optionalUser).usingRecursiveComparison().isEqualTo(expected);
     }
 
@@ -59,8 +61,6 @@ class Sql2oUserRepositoryTest {
         String password = "555";
         User vasya = new User(25, name, email, password);
         sql2oUserRepository.save(vasya);
-        assertThrows(org.sql2o.Sql2oException.class, () -> {
-            sql2oUserRepository.save(vasya);
-        });
+        assertThat(sql2oUserRepository.save(vasya)).isEqualTo(Optional.empty());
     }
 }
