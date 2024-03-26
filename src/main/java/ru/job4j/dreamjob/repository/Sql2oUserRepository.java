@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 @Primary
 public class Sql2oUserRepository implements UserRepository {
-    private static final Logger logger = LoggerFactory.getLogger(Sql2oUserRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Sql2oUserRepository.class);
 
     private final Sql2o sql2o;
 
@@ -36,7 +36,7 @@ public class Sql2oUserRepository implements UserRepository {
             user.setId(generatedId);
             return Optional.of(user);
         } catch (Exception e) {
-            logger.error("Пользователь с такими данными уже существует" + e);
+            LOGGER.error("Пользователь с такими данными уже существует" + e);
         }
         return Optional.empty();
     }
