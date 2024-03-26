@@ -3,7 +3,8 @@ package ru.job4j.dreamjob.repository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
-import ru.job4j.dreamjob.model.Candidate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.job4j.dreamjob.model.User;
 
 import java.util.Collection;
@@ -12,6 +13,7 @@ import java.util.Optional;
 @Repository
 @Primary
 public class Sql2oUserRepository implements UserRepository {
+    private static final Logger logger = LoggerFactory.getLogger(Sql2oUserRepository.class);
 
     private final Sql2o sql2o;
 
@@ -34,7 +36,7 @@ public class Sql2oUserRepository implements UserRepository {
             user.setId(generatedId);
             return Optional.of(user);
         } catch (Exception e) {
-            System.err.println("Пользователь с такими данными уже существует" + e);
+            logger.error("Пользователь с такими данными уже существует" + e);
         }
         return Optional.empty();
     }
